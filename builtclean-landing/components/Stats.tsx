@@ -2,7 +2,7 @@ const stats = [
   { value: "One AI coach", label: "that knows your body" },
   { value: "< 3 min", label: "from signup to first plan" },
   { value: "Every day", label: "a plan built for that day" },
-  { value: "Free", label: "for founding members" },
+  { value: "Free", label: "for early members" },
 ];
 
 export default function Stats() {
