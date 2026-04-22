@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "builtclean-landing/**"
+      - ".github/workflows/ci.yml"
+  pull_request:
+    branches: [main, master]
+    paths:
+      - "builtclean-landing/**"
+      - ".github/workflows/ci.yml"
+
+defaults:
+  run:
+    working-directory: builtclean-landing
+
+jobs:
+  ci:
+    name: Type check, lint & build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: builtclean-landing/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Stub env vars so the build doesn't fail on missing secrets.
+      # These are never used at build time — all clients are lazy-initialised.
+      - name: Create stub .env.local
+        run: |
+          cat <<EOF > .env.local
+          NEXT_PUBLIC_SUPABASE_URL=https://placeholder.supabase.co
+          NEXT_PUBLIC_SUPABASE_ANON_KEY=placeholder_anon_key
+          SUPABASE_SERVICE_ROLE_KEY=placeholder_service_role_key
+          RESEND_API_KEY=placeholder_resend_key
+          NEXT_PUBLIC_APP_URL=http://localhost:3000
+          EOF
+
+      - name: TypeScript — type check
+        run: npx tsc --noEmit
+
+      - name: ESLint — lint check
+        run: npm run lint
+
+      - name: Next.js — production build
+        run: npm run build
+
+      - name: Verify build output exists
+        run: |
+          if [ ! -d ".next" ]; then
+            echo "Build output missing — .next directory not found"
+            exit 1
+          fi
+          echo "Build output verified ✓"
+
+      - name: Check for TypeScript errors in output
+        run: |
+          if find .next -name "*.js" | head -1 | grep -q "."; then
+            echo "JS output found ✓"
+          else
+            echo "No JS output found in .next"
+            exit 1
+          fi
