@@ -1,14 +1,14 @@
 const testimonials = [
   {
     quote:
-      "I've tried every fitness app. The problem was always me — I'd miss a few days and just give up. BUILTCLEAN is the first one that actually adjusts when life gets in the way instead of making me feel like a failure.",
+      "I've tried every fitness app. The problem was always me as I'd miss a few days and just give up. Builtclean is the first one that actually adjusts when life gets in the way instead of making me feel like a failure.",
     name: "Dhruv B.",
     role: "Early beta tester",
     initials: "DB",
   },
   {
     quote:
-      "I didn't expect the meal planning to be this good. It's not just macro targets — it actually suggests meals I'd eat and shifts around my training days. Finally feels like it was built for a real person.",
+      "I didn't expect the meal planning to be this good. It's not just macro targets, it actually suggests meals I'd eat and shifts around my training days. Finally feels like it was built for a real person.",
     name: "Varun S.",
     role: "Waitlist member",
     initials: "VS",

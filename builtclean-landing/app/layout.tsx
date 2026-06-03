@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "https://builtclean.app"),
@@ -40,9 +41,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full" style={{ viewTransitionName: "root" }}>
       <body className="min-h-full flex flex-col" style={{ background: "#0a0a0a", color: "#ffffff" }}>
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
