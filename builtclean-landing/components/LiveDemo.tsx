@@ -204,11 +204,19 @@ export default function LiveDemo() {
   const turnstileRef = useRef<TurnstileInstance>(null);
   const [token, setToken] = useState<string | null>(null);
 
+  // Always scroll on new message; only follow during streaming if already near bottom
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
     el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
-  }, [messages, streamingText]);
+  }, [messages.length]);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const nearBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 80;
+    if (nearBottom) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+  }, [streamingText]);
 
   const send = useCallback(async (content: string) => {
     const trimmed = content.trim();
@@ -262,9 +270,6 @@ export default function LiveDemo() {
 
       setMessages((m) => [...m, { role: "assistant", content: acc }]);
       setStreamingText("");
-
-      const serverRemaining = res.headers.get("X-RateLimit-Remaining");
-      if (serverRemaining) setRemaining(Number(serverRemaining));
     } catch {
       setMessages((m) => [...m, { role: "assistant", content: "Network blip. Try again in a sec." }]);
     } finally {
@@ -296,11 +301,11 @@ export default function LiveDemo() {
         {/* Chat container */}
         <div
           className="rounded-3xl overflow-hidden flex flex-col"
-          style={{ background: "#0f0f0f", border: "1px solid #1e1e1e", minHeight: "560px" }}
+          style={{ background: "#0f0f0f", border: "1px solid #1e1e1e", height: "560px" }}
         >
           {/* Status bar */}
           <div
-            className="px-5 py-3 flex items-center justify-between text-xs"
+            className="flex-shrink-0 px-5 py-3 flex items-center justify-between text-xs"
             style={{ borderBottom: "1px solid #1a1a1a" }}
           >
             <div className="flex items-center gap-2" style={{ color: "#888" }}>
@@ -316,7 +321,7 @@ export default function LiveDemo() {
           </div>
 
           {/* Messages */}
-          <div ref={scrollRef} className="flex-1 overflow-y-auto p-5 space-y-4" style={{ maxHeight: "60vh" }}>
+          <div ref={scrollRef} data-lenis-prevent className="flex-1 min-h-0 overflow-y-auto p-5 space-y-4">
             <AnimatePresence initial={false}>
               {messages.map((m, i) => (
                 <motion.div
@@ -339,7 +344,7 @@ export default function LiveDemo() {
 
           {/* Suggestion chips — only show on first message */}
           {messages.length === 1 && !isStreaming && (
-            <div className="px-5 pb-3 flex flex-wrap gap-2">
+            <div className="flex-shrink-0 px-5 pb-3 flex flex-wrap gap-2">
               {SUGGESTIONS.map((s) => (
                 <button
                   key={s}
@@ -357,7 +362,7 @@ export default function LiveDemo() {
           )}
 
           {/* Input */}
-          <div className="p-3 flex gap-2" style={{ borderTop: "1px solid #1a1a1a" }}>
+          <div className="flex-shrink-0 p-3 flex gap-2" style={{ borderTop: "1px solid #1a1a1a" }}>
             <input
               ref={inputRef}
               value={input}
