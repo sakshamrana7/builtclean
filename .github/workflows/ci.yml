@@ -20,6 +20,8 @@ jobs:
   ci:
     name: Type check, lint & build
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout
@@ -43,7 +45,8 @@ jobs:
           NEXT_PUBLIC_SUPABASE_URL=https://placeholder.supabase.co
           NEXT_PUBLIC_SUPABASE_ANON_KEY=placeholder_anon_key
           SUPABASE_SERVICE_ROLE_KEY=placeholder_service_role_key
-          RESEND_API_KEY=placeholder_resend_key
+          GMAIL_USER=placeholder@gmail.com
+          GMAIL_APP_PASSWORD=placeholder_app_password
           NEXT_PUBLIC_APP_URL=http://localhost:3000
           EOF
 

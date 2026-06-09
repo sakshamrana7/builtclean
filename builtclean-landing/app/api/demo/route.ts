@@ -103,11 +103,13 @@ export async function POST(req: NextRequest) {
     return new Response(JSON.stringify({ error: "Invalid message content" }), { status: 400 });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const clean = messages
+  type RawMsg = { role: unknown; content: unknown };
+  const clean = (messages as RawMsg[])
     .slice(-10)
-    .filter((m: any) => m && (m.role === "user" || m.role === "assistant"))
-    .map((m: any) => ({ role: m.role, content: String(m.content).slice(0, 1000) }));
+    .filter((m): m is { role: "user" | "assistant"; content: unknown } =>
+      !!m && (m.role === "user" || m.role === "assistant")
+    )
+    .map((m) => ({ role: m.role, content: String(m.content).slice(0, 1000) }));
 
   const stream = await anthropic.messages.stream({
     model: "claude-sonnet-4-6",

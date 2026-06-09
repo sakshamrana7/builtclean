@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -8,7 +9,7 @@ export default function Footer() {
     >
       <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
         {/* Logo */}
-        <a href="/">
+        <Link href="/">
           <Image
             src="/builtclean_logo.jpg"
             alt="BUILTCLEAN"
@@ -16,7 +17,7 @@ export default function Footer() {
             height={36}
             className="h-9 w-9 rounded-full object-cover opacity-40 hover:opacity-60 transition-opacity duration-150"
           />
-        </a>
+        </Link>
 
         {/* Links */}
         <nav className="flex items-center gap-6">

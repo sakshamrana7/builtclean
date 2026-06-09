@@ -8,8 +8,17 @@ export const maxDuration = 60;
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY! });
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function buildSystemPrompt(profile: any) {
+interface UserProfile {
+  full_name?: string;
+  goals?: string[];
+  fitness_level?: string;
+  equipment?: string[];
+  days_per_week?: number;
+  streak_count?: number;
+  longest_streak?: number;
+}
+
+function buildSystemPrompt(profile: UserProfile | null) {
   return `You are the Built Clean coach. Read this carefully — voice is everything.
 
 # WHO YOU ARE

@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { getSupabaseAdmin } from "@/lib/supabase";
-import { getResend, FROM_EMAIL, REPLY_TO, buildConfirmationEmail } from "@/lib/resend";
+import { sendConfirmationEmail } from "@/lib/email";
 
 const bodySchema = z.object({
-  email: z.string().email(),
+  email: z.string().email().transform((e) => e.trim().toLowerCase()),
 });
 
 export async function POST(request: NextRequest) {
@@ -30,35 +30,21 @@ export async function POST(request: NextRequest) {
   const { email } = parsed.data;
   const supabase = getSupabaseAdmin();
 
-  // 2. Check if email already exists
-  const { data: existing, error: lookupError } = await supabase
-    .from("waitlist")
-    .select("id")
-    .eq("email", email)
-    .maybeSingle();
-
-  if (lookupError) {
-    console.error("[waitlist] Supabase lookup error:", lookupError);
-    return NextResponse.json(
-      { success: false, message: "Something went wrong. Please try again." },
-      { status: 500 }
-    );
-  }
-
-  if (existing) {
-    return NextResponse.json(
-      { success: false, message: "You're already on the list!" },
-      { status: 200 }
-    );
-  }
-
-  // 3. Insert new email
+  // 2. Insert — unique constraint on email is the source of truth.
+  // This is atomic: no race condition between a separate lookup + insert.
   const { error: insertError } = await supabase.from("waitlist").insert({
     email,
     source: "landing_page",
   });
 
   if (insertError) {
+    // Postgres unique violation — email already registered
+    if (insertError.code === "23505") {
+      return NextResponse.json(
+        { success: false, message: "You're already on the list!" },
+        { status: 200 }
+      );
+    }
     console.error("[waitlist] Supabase insert error:", insertError);
     return NextResponse.json(
       { success: false, message: "Something went wrong. Please try again." },
@@ -66,18 +52,12 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // 4. Send confirmation email via Resend
+  // 4. Send confirmation email via Gmail
   try {
-    await getResend().emails.send({
-      from: FROM_EMAIL,
-      reply_to: REPLY_TO,
-      to: email,
-      subject: "You're on the Built Clean waitlist",
-      html: buildConfirmationEmail(email),
-    });
+    await sendConfirmationEmail(email);
   } catch (emailError) {
     // Log but don't fail — the user is already in the DB
-    console.error("[waitlist] Resend email error:", emailError);
+    console.error("[waitlist] Email error:", emailError);
   }
 
   // 5. Success

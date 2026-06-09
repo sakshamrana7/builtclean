@@ -2,9 +2,11 @@
 
 import { useRef, useState } from "react";
 import { motion } from "motion/react";
+import type { ComponentProps } from "react";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function MagneticButton({ children, className = "", ...props }: any) {
+type MagneticButtonProps = ComponentProps<typeof motion.button>;
+
+export function MagneticButton({ children, className = "", ...props }: MagneticButtonProps) {
   const ref = useRef<HTMLButtonElement>(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });
 

@@ -7,6 +7,7 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import ReactMarkdown from "react-markdown";
+import type { Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Turnstile, TurnstileInstance } from "@marsidev/react-turnstile";
 
@@ -67,24 +68,24 @@ function useWordPacedDisplay(targetText: string, isActive: boolean): string {
 }
 
 // === Markdown styling ===
-const markdownComponents = {
-  p: ({ children }: any) => <p className="mb-2 last:mb-0">{children}</p>,
-  strong: ({ children }: any) => <strong className="text-white font-semibold">{children}</strong>,
-  em: ({ children }: any) => <em className="italic" style={{ color: "#aaa" }}>{children}</em>,
-  ul: ({ children }: any) => <ul className="my-2 space-y-1">{children}</ul>,
-  ol: ({ children }: any) => <ol className="my-2 space-y-1">{children}</ol>,
-  li: ({ children }: any) => (
+const markdownComponents: Partial<Components> = {
+  p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+  strong: ({ children }) => <strong className="text-white font-semibold">{children}</strong>,
+  em: ({ children }) => <em className="italic" style={{ color: "#aaa" }}>{children}</em>,
+  ul: ({ children }) => <ul className="my-2 space-y-1">{children}</ul>,
+  ol: ({ children }) => <ol className="my-2 space-y-1">{children}</ol>,
+  li: ({ children }) => (
     <li className="flex gap-2 items-start">
       <span style={{ color: "#4ade80" }} className="mt-0.5 flex-shrink-0">—</span>
       <span className="flex-1">{children}</span>
     </li>
   ),
-  code: ({ children }: any) => (
+  code: ({ children }) => (
     <code className="px-1.5 py-0.5 rounded text-xs font-mono" style={{ background: "#222", color: "#4ade80" }}>
       {children}
     </code>
   ),
-  blockquote: ({ children }: any) => (
+  blockquote: ({ children }) => (
     <blockquote className="border-l-2 pl-3 my-2" style={{ borderColor: "#333", color: "#888" }}>
       {children}
     </blockquote>
