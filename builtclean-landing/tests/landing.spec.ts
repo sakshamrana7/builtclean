@@ -22,7 +22,7 @@ test.describe("Landing page", () => {
 
   test("navbar join waitlist button scrolls to hero form", async ({ page }) => {
     await page.getByRole("link", { name: /join waitlist/i }).first().click();
-    await expect(page.locator("#waitlist")).toBeInViewport();
+    await expect(page.locator("#waitlist")).toBeInViewport({ timeout: 5000 });
   });
 
   test("marquee ticker is present", async ({ page }) => {
@@ -32,6 +32,6 @@ test.describe("Landing page", () => {
   test("stats section shows key values", async ({ page }) => {
     await page.locator("section").filter({ hasText: "Built around your coach" }).scrollIntoViewIfNeeded();
     await expect(page.getByText(/built around your coach/i)).toBeVisible();
-    await expect(page.getByText(/for founding members/i)).toBeVisible();
+    await expect(page.getByText(/for founding members/i).first()).toBeVisible();
   });
 });

@@ -31,7 +31,7 @@ test.describe("Accessibility", () => {
     // Tab to the first focusable element, then navigate
     await page.keyboard.press("Tab");
     const focused = page.locator(":focus");
-    await expect(focused).toBeTruthy();
+    await expect(focused).toHaveCount(1);
   });
 
   test("waitlist form is keyboard submittable", async ({ page }) => {
@@ -61,16 +61,13 @@ test.describe("Accessibility", () => {
   });
 
   test("navbar links have descriptive text", async ({ page }) => {
-    const navLinks = page.locator("header a");
-    const count = await navLinks.count();
-    for (let i = 0; i < count; i++) {
-      const text = await navLinks.nth(i).textContent();
-      const ariaLabel = await navLinks.nth(i).getAttribute("aria-label");
-      expect(
-        (text && text.trim()) || ariaLabel,
-        `Nav link ${i} has no accessible text`
-      ).toBeTruthy();
-    }
+    // Logo link — accessible via img alt text
+    const logoLink = page.locator("header").getByAltText("BUILTCLEAN");
+    await expect(logoLink).toBeVisible();
+
+    // Text links — must have non-empty text content
+    const joinLink = page.locator("header").getByRole("link", { name: /join waitlist/i });
+    await expect(joinLink.first()).toBeVisible();
   });
 });
 

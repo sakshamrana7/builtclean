@@ -2,11 +2,8 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Live demo chat", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/");
-
-    // Mock Turnstile — always return a fake token so the widget doesn't block tests
+    // Stub Turnstile BEFORE navigation so it's ready when React mounts the widget
     await page.addInitScript(() => {
-      // Stub the Turnstile global so the widget calls onSuccess immediately
       Object.defineProperty(window, "turnstile", {
         value: {
           render: (_el: unknown, opts: { callback?: (token: string) => void }) => {
@@ -20,7 +17,10 @@ test.describe("Live demo chat", () => {
       });
     });
 
+    await page.goto("/");
     await page.locator("text=Talk to your coach.").scrollIntoViewIfNeeded();
+    // Wait for the input to be enabled (Turnstile resolved)
+    await page.getByPlaceholder(/ask anything/i).waitFor({ state: "visible", timeout: 10000 });
   });
 
   test("renders initial coach message", async ({ page }) => {

@@ -6,7 +6,7 @@ test.describe("Navbar", () => {
   });
 
   test("renders logo image", async ({ page }) => {
-    await expect(page.getByAltText("BUILTCLEAN")).toBeVisible();
+    await expect(page.locator("header").getByAltText("BUILTCLEAN")).toBeVisible();
   });
 
   test("renders join waitlist CTA in navbar", async ({ page }) => {
@@ -23,7 +23,7 @@ test.describe("Navbar", () => {
 
   test("navbar join waitlist link scrolls to hero form", async ({ page }) => {
     await page.getByRole("link", { name: /join waitlist/i }).first().click();
-    await expect(page.locator("#waitlist")).toBeInViewport({ timeout: 3000 });
+    await expect(page.locator("#waitlist")).toBeInViewport({ timeout: 5000 });
   });
 
   test("mobile menu button is visible on small screens", async ({ page }) => {

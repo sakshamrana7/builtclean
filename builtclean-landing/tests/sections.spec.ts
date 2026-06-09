@@ -15,8 +15,7 @@ test.describe("Hero section", () => {
   });
 
   test("renders live user counter", async ({ page }) => {
-    // NumberFlow counter — check the surrounding label text exists
-    await expect(page.getByText(/people waiting/i)).toBeVisible();
+    await expect(page.getByText(/on the waitlist/i).first()).toBeVisible();
   });
 });
 
@@ -79,7 +78,7 @@ test.describe("Comparison section", () => {
 
   test("renders column headers", async ({ page }) => {
     await expect(page.getByText("Most apps")).toBeVisible();
-    await expect(page.getByText("BUILTCLEAN")).toBeVisible();
+    await expect(page.getByText("BUILTCLEAN").first()).toBeVisible();
   });
 
   test("renders comparison rows", async ({ page }) => {
