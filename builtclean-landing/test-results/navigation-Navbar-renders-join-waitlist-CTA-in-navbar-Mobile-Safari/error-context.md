@@ -1,0 +1,94 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: navigation.spec.ts >> Navbar >> renders join waitlist CTA in navbar
+- Location: tests/navigation.spec.ts:12:7
+
+# Error details
+
+```
+Error: page.goto: Could not connect to the server.
+Call log:
+  - navigating to "http://localhost:3000/", waiting until "load"
+
+```
+
+# Test source
+
+```ts
+  1  | import { test, expect } from "@playwright/test";
+  2  | 
+  3  | test.describe("Navbar", () => {
+  4  |   test.beforeEach(async ({ page }) => {
+> 5  |     await page.goto("/");
+     |                ^ Error: page.goto: Could not connect to the server.
+  6  |   });
+  7  | 
+  8  |   test("renders logo image", async ({ page }) => {
+  9  |     await expect(page.locator("header").getByAltText("BUILTCLEAN")).toBeVisible();
+  10 |   });
+  11 | 
+  12 |   test("renders join waitlist CTA in navbar", async ({ page }) => {
+  13 |     await expect(page.getByRole("link", { name: /join waitlist/i }).first()).toBeVisible();
+  14 |   });
+  15 | 
+  16 |   test("navbar stays visible after scrolling", async ({ page }) => {
+  17 |     const navbar = page.locator("header");
+  18 |     await expect(navbar).toBeVisible();
+  19 |     await page.evaluate(() => window.scrollBy(0, 800));
+  20 |     await page.waitForTimeout(300);
+  21 |     await expect(navbar).toBeVisible();
+  22 |   });
+  23 | 
+  24 |   test("navbar join waitlist link scrolls to hero form", async ({ page }) => {
+  25 |     await page.getByRole("link", { name: /join waitlist/i }).first().click();
+  26 |     await expect(page.locator("#waitlist")).toBeInViewport({ timeout: 5000 });
+  27 |   });
+  28 | 
+  29 |   test("mobile menu button is visible on small screens", async ({ page }) => {
+  30 |     await page.setViewportSize({ width: 375, height: 812 });
+  31 |     await expect(page.getByRole("button", { name: /open menu/i })).toBeVisible();
+  32 |   });
+  33 | 
+  34 |   test("mobile menu opens and shows nav links", async ({ page }) => {
+  35 |     await page.setViewportSize({ width: 375, height: 812 });
+  36 |     await page.getByRole("button", { name: /open menu/i }).click();
+  37 |     await expect(page.getByRole("button", { name: /close menu/i })).toBeVisible();
+  38 |     // Nav links should now be visible
+  39 |     await expect(page.getByRole("link", { name: /join waitlist/i }).first()).toBeVisible();
+  40 |   });
+  41 | 
+  42 |   test("mobile menu closes when close button is clicked", async ({ page }) => {
+  43 |     await page.setViewportSize({ width: 375, height: 812 });
+  44 |     await page.getByRole("button", { name: /open menu/i }).click();
+  45 |     await page.getByRole("button", { name: /close menu/i }).click();
+  46 |     await expect(page.getByRole("button", { name: /open menu/i })).toBeVisible();
+  47 |   });
+  48 | });
+  49 | 
+  50 | test.describe("Page scrolling and anchors", () => {
+  51 |   test.beforeEach(async ({ page }) => {
+  52 |     await page.goto("/");
+  53 |   });
+  54 | 
+  55 |   test("features section is reachable via scroll", async ({ page }) => {
+  56 |     await page.locator("#features").scrollIntoViewIfNeeded();
+  57 |     await expect(page.locator("#features")).toBeInViewport({ timeout: 3000 });
+  58 |   });
+  59 | 
+  60 |   test("how-it-works section is reachable via scroll", async ({ page }) => {
+  61 |     await page.locator("#how-it-works").scrollIntoViewIfNeeded();
+  62 |     await expect(page.locator("#how-it-works")).toBeInViewport({ timeout: 3000 });
+  63 |   });
+  64 | 
+  65 |   test("page title is correct", async ({ page }) => {
+  66 |     await expect(page).toHaveTitle(/built clean/i);
+  67 |   });
+  68 | });
+  69 | 
+```

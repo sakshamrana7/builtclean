@@ -12,334 +12,309 @@
 # Error details
 
 ```
-Test timeout of 30000ms exceeded.
+Test timeout of 30000ms exceeded while running "beforeEach" hook.
 ```
 
 ```
-Error: locator.click: Test timeout of 30000ms exceeded.
+Error: page.goto: Test timeout of 30000ms exceeded.
 Call log:
-  - waiting for getByRole('button', { name: 'Send' })
-    - locator resolved to <button disabled class="jsx-2aa9f3e469a3bc41 h-11 px-5 rounded-full bg-white text-black text-sm font-semibold disabled:opacity-40 hover:bg-[#e5e5e5] transition-colors">Send</button>
-  - attempting click action
-    2 × waiting for element to be visible, enabled and stable
-      - element is not enabled
-    - retrying click action
-    - waiting 20ms
-    2 × waiting for element to be visible, enabled and stable
-      - element is not enabled
-    - retrying click action
-      - waiting 100ms
-    44 × waiting for element to be visible, enabled and stable
-       - element is not enabled
-     - retrying click action
-       - waiting 500ms
+  - navigating to "http://localhost:3000/", waiting until "load"
 
 ```
 
 # Page snapshot
 
 ```yaml
-- generic [ref=e1]:
-  - main [ref=e2]:
-    - generic [ref=e3]:
-      - generic [ref=e5]:
-        - link "BUILTCLEAN" [ref=e6]:
-          - /url: /
-          - img "BUILTCLEAN" [ref=e7]
-        - button "Open menu" [ref=e8]
-      - navigation [ref=e12]:
-        - link "Features" [ref=e13]:
-          - /url: "#features"
-        - link "How it works" [ref=e14]:
-          - /url: "#how-it-works"
-        - link "About" [ref=e15]:
-          - /url: "#about"
-        - link "Join waitlist" [ref=e16]:
-          - /url: "#waitlist"
-    - generic [ref=e18]:
-      - generic [ref=e19]:
-        - generic [ref=e26]:
-          - generic [ref=e28]: "2"
-          - generic [ref=e30]: ","
-          - generic [ref=e32]: "8"
-          - generic [ref=e34]: "4"
-          - generic [ref=e36]: "9"
-        - text: on the waitlist
-      - heading "Fitness that keeps you coming back." [level=1] [ref=e37]:
-        - generic [ref=e38]: Fitness
-        - generic [ref=e39]: that
-        - generic [ref=e40]: keeps
-        - generic [ref=e41]: you
-        - generic [ref=e42]: coming
-        - generic [ref=e43]: back.
-      - paragraph [ref=e44]: An AI coach that adapts to your life, not the other way around. Built for consistency. Trained for results.
-      - generic [ref=e48]:
-        - textbox "Enter your email address" [ref=e49]
-        - button "Claim early access" [ref=e50]
-      - paragraph [ref=e51]: Free forever for founding members · No credit card · No spam
-    - generic [ref=e53]:
-      - generic [ref=e54]:
-        - text: Adapts daily
-        - generic [ref=e55]: ·
-      - generic [ref=e56]:
-        - text: No guilt
-        - generic [ref=e57]: ·
-      - generic [ref=e58]:
-        - text: Real coaching
-        - generic [ref=e59]: ·
-      - generic [ref=e60]:
-        - text: Trained on sports science
-        - generic [ref=e61]: ·
-      - generic [ref=e62]:
-        - text: Built for consistency
-        - generic [ref=e63]: ·
-      - generic [ref=e64]:
-        - text: Built for real life
-        - generic [ref=e65]: ·
-      - generic [ref=e66]:
-        - text: Adapts daily
-        - generic [ref=e67]: ·
-      - generic [ref=e68]:
-        - text: No guilt
-        - generic [ref=e69]: ·
-      - generic [ref=e70]:
-        - text: Real coaching
-        - generic [ref=e71]: ·
-      - generic [ref=e72]:
-        - text: Trained on sports science
-        - generic [ref=e73]: ·
-      - generic [ref=e74]:
-        - text: Built for consistency
-        - generic [ref=e75]: ·
-      - generic [ref=e76]:
-        - text: Built for real life
-        - generic [ref=e77]: ·
-      - generic [ref=e78]:
-        - text: Adapts daily
-        - generic [ref=e79]: ·
-      - generic [ref=e80]:
-        - text: No guilt
-        - generic [ref=e81]: ·
-      - generic [ref=e82]:
-        - text: Real coaching
-        - generic [ref=e83]: ·
-      - generic [ref=e84]:
-        - text: Trained on sports science
-        - generic [ref=e85]: ·
-      - generic [ref=e86]:
-        - text: Built for consistency
-        - generic [ref=e87]: ·
-      - generic [ref=e88]:
-        - text: Built for real life
-        - generic [ref=e89]: ·
-    - generic [ref=e92]:
-      - generic [ref=e93]:
-        - term [ref=e94]: AI-first
-        - definition [ref=e95]: Built around your coach
-      - generic [ref=e96]:
-        - term [ref=e97]:
-          - generic [ref=e103]: "3"
-          - text: min
-        - definition [ref=e104]: From signup to first plan
-      - generic [ref=e105]:
-        - term [ref=e106]:
-          - generic [ref=e110]:
-            - generic [ref=e112]: "2"
-            - generic [ref=e114]: "4"
-          - text: /7
-        - definition [ref=e115]: Coach always on
-      - generic [ref=e116]:
-        - term [ref=e117]:
-          - text: $
-          - generic [ref=e123]: "0"
-        - definition [ref=e124]: For founding members
-    - generic [ref=e126]:
-      - generic [ref=e127]:
-        - paragraph [ref=e128]: Try it live
-        - heading "Talk to your coach." [level=2] [ref=e129]
-        - paragraph [ref=e130]: Five free messages. No signup. Real coaching — same brain as the full app.
-      - generic [ref=e131]:
-        - generic [ref=e132]:
-          - generic [ref=e133]: Coach online
-          - generic [ref=e135]: 5 messages left
-        - paragraph [ref=e141]: Hey, I'm your coach. Workouts, meals, or those days when motivation just isn't there — I've got you. You've got 5 free messages to start. What's going on?
-        - generic [ref=e142]:
-          - button "Plan a 30-min workout I can do at home" [ref=e143]
-          - button "I missed 3 days. How do I get back on track?" [ref=e144]
-          - button "What should I eat after a heavy leg day?" [ref=e145]
-          - button "I have low energy today. Should I still train?" [ref=e146]
-        - generic [ref=e147]:
-          - textbox "Ask anything..." [active] [ref=e148]
-          - button "Send" [disabled] [ref=e149]
-    - generic [ref=e151]:
-      - generic [ref=e152]:
-        - paragraph [ref=e153]: What it does
-        - heading "Less app. More coach." [level=2] [ref=e154]
-        - paragraph [ref=e155]: Every feature exists to remove a reason you'd quit.
-      - generic [ref=e156]:
-        - generic [ref=e159]:
-          - generic [ref=e160]:
-            - generic [ref=e163]: Coach
-            - heading "An AI coach that learns who you are." [level=3] [ref=e164]:
-              - text: An AI coach that
-              - text: learns who you are.
-            - paragraph [ref=e165]: Not a chatbot. Not a template. A coach that remembers your last session, your bad weeks, and your goals — and adjusts the plan in real time.
-          - generic [ref=e166]:
-            - generic [ref=e168]: I'm tired today. Should I skip?
-            - generic [ref=e170]: Don't skip, swap. Let's do a 15-minute mobility flow instead. Streak stays alive, body gets what it needs.
-        - generic [ref=e172]:
-          - heading "Streaks that forgive" [level=3] [ref=e173]
-          - paragraph [ref=e174]: Miss a day. Get a make-up workout. Keep the chain.
-        - generic [ref=e198]:
-          - heading "Meals that match" [level=3] [ref=e199]
-          - paragraph [ref=e200]: Synced to your training load. Today is push day — your protein target is up by 15g.
-          - generic [ref=e201]:
-            - generic [ref=e202]: 142g
-            - generic [ref=e203]: ↑ 15g vs rest day
-        - generic [ref=e205]:
-          - heading "Weekly debrief" [level=3] [ref=e206]
-          - paragraph [ref=e207]: Every Sunday, a short note from your coach. What worked, what didn't, what's next.
-          - generic [ref=e208]: "\"You crushed it this week. Let's push the squat 5% next.\""
-        - generic [ref=e211]:
-          - generic [ref=e212]:
-            - heading "Built around your life" [level=3] [ref=e213]
-            - paragraph [ref=e214]: Travelling? No equipment? Bad sleep? The plan flexes. The progress doesn't stop.
-          - generic [ref=e215]:
-            - generic [ref=e216]: Travel
-            - generic [ref=e217]: No gym
-            - generic [ref=e218]: Low energy
-            - generic [ref=e219]: 30 min
-            - generic [ref=e220]: Sore
-    - generic [ref=e222]:
-      - heading "Not another fitness app." [level=2] [ref=e223]
-      - generic [ref=e224]:
-        - generic [ref=e225]:
-          - generic [ref=e227]: Most apps
-          - generic [ref=e228]: BUILTCLEAN
-        - generic [ref=e229]:
-          - generic [ref=e230]: Adapts to your week
-          - img [ref=e232]
-          - img [ref=e236]
-        - generic [ref=e239]:
-          - generic [ref=e240]: Forgives missed days
-          - img [ref=e242]
-          - img [ref=e246]
-        - generic [ref=e249]:
-          - generic [ref=e250]: Real conversation with coach
-          - img [ref=e252]
-          - img [ref=e256]
-        - generic [ref=e259]:
-          - generic [ref=e260]: Meal plans synced to training
-          - img [ref=e262]
-          - img [ref=e266]
-        - generic [ref=e269]:
-          - generic [ref=e270]: Generic 12-week plans
-          - img [ref=e272]
-          - img [ref=e276]
-        - generic [ref=e279]:
-          - generic [ref=e280]: Guilt-trips when you skip
-          - img [ref=e282]
-          - img [ref=e286]
-    - generic [ref=e290]:
-      - generic [ref=e291]:
-        - paragraph [ref=e292]: How it works
-        - heading "Three steps to built clean." [level=2] [ref=e293]
-      - generic [ref=e294]:
-        - generic [ref=e296]:
-          - generic [ref=e297]: "01"
-          - heading "Tell us about yourself" [level=3] [ref=e298]
-          - paragraph [ref=e299]: Answer a few quick questions about your goals, schedule, and fitness history. No lengthy onboarding — just what matters.
-        - generic [ref=e301]:
-          - generic [ref=e302]: "02"
-          - heading "Get your first plan" [level=3] [ref=e303]
-          - paragraph [ref=e304]: Your AI coach builds a personalized workout and nutrition plan in seconds, calibrated to your real life.
-        - generic [ref=e306]:
-          - generic [ref=e307]: "03"
-          - heading "Show up daily" [level=3] [ref=e308]
-          - paragraph [ref=e309]: Check in each day. Log workouts, meals, or just your mood. The coach adapts in real time.
-        - generic [ref=e311]:
-          - generic [ref=e312]: "04"
-          - heading "Watch habits form" [level=3] [ref=e313]
-          - paragraph [ref=e314]: After 30 days you'll see the data — and feel the difference. Consistency compounds.
-    - generic [ref=e316]:
-      - generic [ref=e317]:
-        - paragraph [ref=e318]: Early feedback
-        - heading "People are excited." [level=2] [ref=e319]
-      - generic [ref=e320]:
-        - generic [ref=e321]:
-          - img [ref=e322]
-          - paragraph [ref=e324]: I've tried every fitness app. The problem was always me as I'd miss a few days and just give up. Builtclean is the first one that actually adjusts when life gets in the way instead of making me feel like a failure.
-          - generic [ref=e325]:
-            - generic [ref=e326]: DB
-            - generic [ref=e327]:
-              - paragraph [ref=e328]: Dhruv B.
-              - paragraph [ref=e329]: Early beta tester
-        - generic [ref=e330]:
-          - img [ref=e331]
-          - paragraph [ref=e333]: I didn't expect the meal planning to be this good. It's not just macro targets, it actually suggests meals I'd eat and shifts around my training days. Finally feels like it was built for a real person.
-          - generic [ref=e334]:
-            - generic [ref=e335]: VS
-            - generic [ref=e336]:
-              - paragraph [ref=e337]: Varun S.
-              - paragraph [ref=e338]: Waitlist member
-        - generic [ref=e339]:
-          - img [ref=e340]
-          - paragraph [ref=e342]: Most fitness apps feel like they were designed to make you feel guilty. This one feels like it's actually in your corner. It's a small difference but it changes everything about whether you keep showing up.
-          - generic [ref=e343]:
-            - generic [ref=e344]: DS
-            - generic [ref=e345]:
-              - paragraph [ref=e346]: Darpan S.
-              - paragraph [ref=e347]: Early beta tester
-    - generic [ref=e349]:
-      - heading "Common questions." [level=2] [ref=e350]
-      - generic [ref=e351]:
-        - generic [ref=e352]:
-          - button "When does it launch?" [ref=e353]:
-            - generic [ref=e354]: When does it launch?
-            - img [ref=e355]
-          - generic [ref=e358]: We're rolling out to founding members in waves starting Q1 2026. Joining the waitlist locks in early access + free forever pricing.
-        - button "How is this different from a fitness app with AI features?" [ref=e360]:
-          - generic [ref=e361]: How is this different from a fitness app with AI features?
-          - img [ref=e362]
-        - button "Do I need equipment or a gym?" [ref=e365]:
-          - generic [ref=e366]: Do I need equipment or a gym?
-          - img [ref=e367]
-        - button "Will it actually keep me consistent?" [ref=e370]:
-          - generic [ref=e371]: Will it actually keep me consistent?
-          - img [ref=e372]
-        - button "What does it cost?" [ref=e375]:
-          - generic [ref=e376]: What does it cost?
-          - img [ref=e377]
-        - button "Is my data private?" [ref=e380]:
-          - generic [ref=e381]: Is my data private?
-          - img [ref=e382]
-    - generic [ref=e385]:
-      - heading "Ready to build something clean?" [level=2] [ref=e386]:
-        - text: Ready to build
-        - text: something clean?
-      - paragraph [ref=e387]: Join the waitlist. Be first. It's free.
-      - generic [ref=e391]:
-        - textbox "Enter your email address" [ref=e392]
-        - button "Claim your spot" [ref=e393]
-    - generic [ref=e395]:
-      - link "BUILTCLEAN" [ref=e396]:
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - link "BUILTCLEAN" [ref=e6]:
         - /url: /
-        - img "BUILTCLEAN" [ref=e397]
-      - navigation [ref=e398]:
-        - link "Privacy" [ref=e399]:
-          - /url: /privacy
-        - link "Terms" [ref=e400]:
-          - /url: /terms
-        - link "Contact" [ref=e401]:
-          - /url: mailto:builtcleanai@gmail.com
-      - generic [ref=e402]:
-        - link "Built Clean on Instagram" [ref=e403]:
-          - /url: https://instagram.com/builtclean.ai
-          - img [ref=e404]
-        - generic [ref=e408]: © 2025 Built Clean. All rights reserved.
-  - button "Open Next.js Dev Tools" [ref=e414] [cursor=pointer]:
-    - img [ref=e415]
-  - alert [ref=e420]
+        - img "BUILTCLEAN" [ref=e7]
+      - button "Open menu" [ref=e8]
+    - navigation [ref=e12]:
+      - link "Features" [ref=e13]:
+        - /url: "#features"
+      - link "How it works" [ref=e14]:
+        - /url: "#how-it-works"
+      - link "About" [ref=e15]:
+        - /url: "#about"
+      - link "Join waitlist" [ref=e16]:
+        - /url: "#waitlist"
+  - generic [ref=e18]:
+    - generic [ref=e19]:
+      - img "2,847" [ref=e24]:
+        - generic [ref=e26]:
+          - generic [ref=e27]: "2"
+          - generic [ref=e28]: ","
+          - generic [ref=e29]: "8"
+          - generic [ref=e30]: "4"
+          - generic [ref=e31]: "7"
+      - text: on the waitlist
+    - heading "Fitness that keeps you coming back." [level=1] [ref=e32]:
+      - generic [ref=e33]: Fitness
+      - generic [ref=e34]: that
+      - generic [ref=e35]: keeps
+      - generic [ref=e36]: you
+      - generic [ref=e37]: coming
+      - generic [ref=e38]: back.
+    - paragraph [ref=e39]: An AI coach that adapts to your life, not the other way around. Built for consistency. Trained for results.
+    - generic [ref=e43]:
+      - textbox "Enter your email address" [ref=e44]
+      - button "Claim early access" [ref=e45]
+    - paragraph [ref=e46]: Free forever for founding members · No credit card · No spam
+  - generic [ref=e48]:
+    - generic [ref=e49]:
+      - text: Adapts daily
+      - generic [ref=e50]: ·
+    - generic [ref=e51]:
+      - text: No guilt
+      - generic [ref=e52]: ·
+    - generic [ref=e53]:
+      - text: Real coaching
+      - generic [ref=e54]: ·
+    - generic [ref=e55]:
+      - text: Trained on sports science
+      - generic [ref=e56]: ·
+    - generic [ref=e57]:
+      - text: Built for consistency
+      - generic [ref=e58]: ·
+    - generic [ref=e59]:
+      - text: Built for real life
+      - generic [ref=e60]: ·
+    - generic [ref=e61]:
+      - text: Adapts daily
+      - generic [ref=e62]: ·
+    - generic [ref=e63]:
+      - text: No guilt
+      - generic [ref=e64]: ·
+    - generic [ref=e65]:
+      - text: Real coaching
+      - generic [ref=e66]: ·
+    - generic [ref=e67]:
+      - text: Trained on sports science
+      - generic [ref=e68]: ·
+    - generic [ref=e69]:
+      - text: Built for consistency
+      - generic [ref=e70]: ·
+    - generic [ref=e71]:
+      - text: Built for real life
+      - generic [ref=e72]: ·
+    - generic [ref=e73]:
+      - text: Adapts daily
+      - generic [ref=e74]: ·
+    - generic [ref=e75]:
+      - text: No guilt
+      - generic [ref=e76]: ·
+    - generic [ref=e77]:
+      - text: Real coaching
+      - generic [ref=e78]: ·
+    - generic [ref=e79]:
+      - text: Trained on sports science
+      - generic [ref=e80]: ·
+    - generic [ref=e81]:
+      - text: Built for consistency
+      - generic [ref=e82]: ·
+    - generic [ref=e83]:
+      - text: Built for real life
+      - generic [ref=e84]: ·
+  - generic [ref=e87]:
+    - generic [ref=e88]:
+      - term [ref=e89]: AI-first
+      - definition [ref=e90]: Built around your coach
+    - generic [ref=e91]:
+      - term [ref=e92]: 3 min
+      - definition [ref=e93]: From signup to first plan
+    - generic [ref=e94]:
+      - term [ref=e95]: 24/7
+      - definition [ref=e96]: Coach always on
+    - generic [ref=e97]:
+      - term [ref=e98]: $0
+      - definition [ref=e99]: For founding members
+  - generic [ref=e101]:
+    - generic [ref=e102]:
+      - paragraph [ref=e103]: Try it live
+      - heading "Talk to your coach." [level=2] [ref=e104]
+      - paragraph [ref=e105]: Five free messages. No signup. Real coaching — same brain as the full app.
+    - generic [ref=e106]:
+      - generic [ref=e107]:
+        - generic [ref=e108]: Coach online
+        - generic [ref=e110]: 5 messages left
+      - paragraph [ref=e116]: Hey, I'm your coach. Workouts, meals, or those days when motivation just isn't there — I've got you. You've got 5 free messages to start. What's going on?
+      - generic [ref=e117]:
+        - button "Plan a 30-min workout I can do at home" [disabled] [ref=e118]
+        - button "I missed 3 days. How do I get back on track?" [disabled] [ref=e119]
+        - button "What should I eat after a heavy leg day?" [disabled] [ref=e120]
+        - button "I have low energy today. Should I still train?" [disabled] [ref=e121]
+      - generic [ref=e122]:
+        - textbox "Ask anything..." [ref=e123]
+        - button "Send" [disabled] [ref=e124]
+  - generic [ref=e126]:
+    - generic [ref=e127]:
+      - paragraph [ref=e128]: What it does
+      - heading "Less app. More coach." [level=2] [ref=e129]
+      - paragraph [ref=e130]: Every feature exists to remove a reason you'd quit.
+    - generic [ref=e131]:
+      - generic [ref=e134]:
+        - generic [ref=e135]:
+          - generic [ref=e138]: Coach
+          - heading "An AI coach that learns who you are." [level=3] [ref=e139]:
+            - text: An AI coach that
+            - text: learns who you are.
+          - paragraph [ref=e140]: Not a chatbot. Not a template. A coach that remembers your last session, your bad weeks, and your goals — and adjusts the plan in real time.
+        - generic [ref=e141]:
+          - generic [ref=e143]: I'm tired today. Should I skip?
+          - generic [ref=e145]: Don't skip, swap. Let's do a 15-minute mobility flow instead. Streak stays alive, body gets what it needs.
+      - generic [ref=e147]:
+        - heading "Streaks that forgive" [level=3] [ref=e148]
+        - paragraph [ref=e149]: Miss a day. Get a make-up workout. Keep the chain.
+      - generic [ref=e173]:
+        - heading "Meals that match" [level=3] [ref=e174]
+        - paragraph [ref=e175]: Synced to your training load. Today is push day — your protein target is up by 15g.
+        - generic [ref=e176]:
+          - generic [ref=e177]: 142g
+          - generic [ref=e178]: ↑ 15g vs rest day
+      - generic [ref=e180]:
+        - heading "Weekly debrief" [level=3] [ref=e181]
+        - paragraph [ref=e182]: Every Sunday, a short note from your coach. What worked, what didn't, what's next.
+        - generic [ref=e183]: "\"You crushed it this week. Let's push the squat 5% next.\""
+      - generic [ref=e186]:
+        - generic [ref=e187]:
+          - heading "Built around your life" [level=3] [ref=e188]
+          - paragraph [ref=e189]: Travelling? No equipment? Bad sleep? The plan flexes. The progress doesn't stop.
+        - generic [ref=e190]:
+          - generic [ref=e191]: Travel
+          - generic [ref=e192]: No gym
+          - generic [ref=e193]: Low energy
+          - generic [ref=e194]: 30 min
+          - generic [ref=e195]: Sore
+  - generic [ref=e197]:
+    - heading "Not another fitness app." [level=2] [ref=e198]
+    - generic [ref=e199]:
+      - generic [ref=e200]:
+        - generic [ref=e202]: Most apps
+        - generic [ref=e203]: BUILTCLEAN
+      - generic [ref=e204]:
+        - generic [ref=e205]: Adapts to your week
+        - img [ref=e207]
+        - img [ref=e211]
+      - generic [ref=e214]:
+        - generic [ref=e215]: Forgives missed days
+        - img [ref=e217]
+        - img [ref=e221]
+      - generic [ref=e224]:
+        - generic [ref=e225]: Real conversation with coach
+        - img [ref=e227]
+        - img [ref=e231]
+      - generic [ref=e234]:
+        - generic [ref=e235]: Meal plans synced to training
+        - img [ref=e237]
+        - img [ref=e241]
+      - generic [ref=e244]:
+        - generic [ref=e245]: Generic 12-week plans
+        - img [ref=e247]
+        - img [ref=e251]
+      - generic [ref=e254]:
+        - generic [ref=e255]: Guilt-trips when you skip
+        - img [ref=e257]
+        - img [ref=e261]
+  - generic [ref=e265]:
+    - generic [ref=e266]:
+      - paragraph [ref=e267]: How it works
+      - heading "Three steps to built clean." [level=2] [ref=e268]
+    - generic [ref=e269]:
+      - generic [ref=e271]:
+        - generic [ref=e272]: "01"
+        - heading "Tell us about yourself" [level=3] [ref=e273]
+        - paragraph [ref=e274]: Answer a few quick questions about your goals, schedule, and fitness history. No lengthy onboarding — just what matters.
+      - generic [ref=e276]:
+        - generic [ref=e277]: "02"
+        - heading "Get your first plan" [level=3] [ref=e278]
+        - paragraph [ref=e279]: Your AI coach builds a personalized workout and nutrition plan in seconds, calibrated to your real life.
+      - generic [ref=e281]:
+        - generic [ref=e282]: "03"
+        - heading "Show up daily" [level=3] [ref=e283]
+        - paragraph [ref=e284]: Check in each day. Log workouts, meals, or just your mood. The coach adapts in real time.
+      - generic [ref=e286]:
+        - generic [ref=e287]: "04"
+        - heading "Watch habits form" [level=3] [ref=e288]
+        - paragraph [ref=e289]: After 30 days you'll see the data — and feel the difference. Consistency compounds.
+  - generic [ref=e291]:
+    - generic [ref=e292]:
+      - paragraph [ref=e293]: Early feedback
+      - heading "People are excited." [level=2] [ref=e294]
+    - generic [ref=e295]:
+      - generic [ref=e296]:
+        - img [ref=e297]
+        - paragraph [ref=e299]: I've tried every fitness app. The problem was always me as I'd miss a few days and just give up. Builtclean is the first one that actually adjusts when life gets in the way instead of making me feel like a failure.
+        - generic [ref=e300]:
+          - generic [ref=e301]: DB
+          - generic [ref=e302]:
+            - paragraph [ref=e303]: Dhruv B.
+            - paragraph [ref=e304]: Early beta tester
+      - generic [ref=e305]:
+        - img [ref=e306]
+        - paragraph [ref=e308]: I didn't expect the meal planning to be this good. It's not just macro targets, it actually suggests meals I'd eat and shifts around my training days. Finally feels like it was built for a real person.
+        - generic [ref=e309]:
+          - generic [ref=e310]: VS
+          - generic [ref=e311]:
+            - paragraph [ref=e312]: Varun S.
+            - paragraph [ref=e313]: Waitlist member
+      - generic [ref=e314]:
+        - img [ref=e315]
+        - paragraph [ref=e317]: Most fitness apps feel like they were designed to make you feel guilty. This one feels like it's actually in your corner. It's a small difference but it changes everything about whether you keep showing up.
+        - generic [ref=e318]:
+          - generic [ref=e319]: DS
+          - generic [ref=e320]:
+            - paragraph [ref=e321]: Darpan S.
+            - paragraph [ref=e322]: Early beta tester
+  - generic [ref=e324]:
+    - heading "Common questions." [level=2] [ref=e325]
+    - generic [ref=e326]:
+      - generic [ref=e327]:
+        - button "When does it launch?" [ref=e328]:
+          - generic [ref=e329]: When does it launch?
+          - img [ref=e330]
+        - generic [ref=e333]: We're rolling out to founding members in waves starting Q1 2026. Joining the waitlist locks in early access + free forever pricing.
+      - button "How is this different from a fitness app with AI features?" [ref=e335]:
+        - generic [ref=e336]: How is this different from a fitness app with AI features?
+        - img [ref=e337]
+      - button "Do I need equipment or a gym?" [ref=e340]:
+        - generic [ref=e341]: Do I need equipment or a gym?
+        - img [ref=e342]
+      - button "Will it actually keep me consistent?" [ref=e345]:
+        - generic [ref=e346]: Will it actually keep me consistent?
+        - img [ref=e347]
+      - button "What does it cost?" [ref=e350]:
+        - generic [ref=e351]: What does it cost?
+        - img [ref=e352]
+      - button "Is my data private?" [ref=e355]:
+        - generic [ref=e356]: Is my data private?
+        - img [ref=e357]
+  - generic [ref=e360]:
+    - heading "Ready to build something clean?" [level=2] [ref=e361]:
+      - text: Ready to build
+      - text: something clean?
+    - paragraph [ref=e362]: Join the waitlist. Be first. It's free.
+    - generic [ref=e366]:
+      - textbox "Enter your email address" [ref=e367]
+      - button "Claim your spot" [ref=e368]
+  - generic [ref=e370]:
+    - link "BUILTCLEAN" [ref=e371]:
+      - /url: /
+      - img "BUILTCLEAN" [ref=e372]
+    - navigation [ref=e373]:
+      - link "Privacy" [ref=e374]:
+        - /url: /privacy
+      - link "Terms" [ref=e375]:
+        - /url: /terms
+      - link "Contact" [ref=e376]:
+        - /url: mailto:builtcleanai@gmail.com
+    - generic [ref=e377]:
+      - link "Built Clean on Instagram" [ref=e378]:
+        - /url: https://instagram.com/builtclean.ai
+        - img [ref=e379]
+      - generic [ref=e383]: © 2025 Built Clean. All rights reserved.
 ```
 
 # Test source
@@ -364,7 +339,8 @@ Call log:
   17  |       });
   18  |     });
   19  | 
-  20  |     await page.goto("/");
+> 20  |     await page.goto("/");
+      |                ^ Error: page.goto: Test timeout of 30000ms exceeded.
   21  |     await page.locator("text=Talk to your coach.").scrollIntoViewIfNeeded();
   22  |     // Wait for the input to be enabled (Turnstile resolved)
   23  |     await page.getByPlaceholder(/ask anything/i).waitFor({ state: "visible", timeout: 10000 });
@@ -402,8 +378,7 @@ Call log:
   55  |     });
   56  | 
   57  |     await page.getByPlaceholder(/ask anything/i).fill("Should I train today?");
-> 58  |     await page.getByRole("button", { name: "Send" }).click();
-      |                                                      ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  58  |     await page.getByRole("button", { name: "Send" }).click();
   59  | 
   60  |     await expect(page.getByText(/should i train today/i)).toBeVisible();
   61  |     await expect(page.getByText(/train\. don't skip/i)).toBeVisible({ timeout: 10000 });
