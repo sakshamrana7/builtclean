@@ -44,14 +44,13 @@ test.describe("Live demo chat", () => {
   test("sends a message and shows response", async ({ page }) => {
     // Mock the demo API to return a canned response
     await page.route("/api/demo", async (route) => {
-      const body = new TextEncoder().encode("Train. Don't skip. You'll feel better after.");
       await route.fulfill({
         status: 200,
         headers: {
           "Content-Type": "text/plain; charset=utf-8",
           "X-RateLimit-Remaining": "4",
         },
-        body,
+        body: "Train. Don't skip. You'll feel better after.",
       });
     });
 

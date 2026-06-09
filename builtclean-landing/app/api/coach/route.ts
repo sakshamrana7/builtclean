@@ -1,6 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { createClient } from "@/lib/supabase/server";
-import { supabaseAdmin } from "@/lib/supabase/admin";
+import { getAdmin } from "@/lib/supabase/admin";
 import { NextRequest } from "next/server";
 
 export const runtime = "nodejs";
@@ -120,12 +120,10 @@ export async function POST(req: NextRequest) {
   const contextMessages = (history || []).reverse();
   const { content: userMessage } = await req.json();
 
-  // Save user message
-  await supabaseAdmin.from("chat_messages").insert({
-    user_id: user.id,
-    role: "user",
-    content: userMessage,
-  });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const db = getAdmin().from("chat_messages") as any;
+
+  await db.insert({ user_id: user.id, role: "user", content: userMessage });
 
   const stream = await anthropic.messages.stream({
     model: "claude-sonnet-4-6",
@@ -150,11 +148,7 @@ export async function POST(req: NextRequest) {
       }
 
       // Save full response (including action tags — frontend strips them)
-      await supabaseAdmin.from("chat_messages").insert({
-        user_id: user.id,
-        role: "assistant",
-        content: fullResponse,
-      });
+      await db.insert({ user_id: user.id, role: "assistant", content: fullResponse }); // db is `any` — see above
 
       controller.close();
     },

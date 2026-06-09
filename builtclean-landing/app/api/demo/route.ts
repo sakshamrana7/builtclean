@@ -63,20 +63,23 @@ export async function POST(req: NextRequest) {
 
   const { messages, turnstileToken } = body;
 
-  // Turnstile verification
-  if (!turnstileToken) {
-    return new Response(JSON.stringify({ error: "Verification required" }), { status: 400 });
+  // Turnstile verification — skipped in development
+  const isDev = process.env.NODE_ENV === "development";
+  if (!isDev) {
+    if (!turnstileToken) {
+      return new Response(JSON.stringify({ error: "Verification required" }), { status: 400 });
+    }
+    const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        secret: process.env.TURNSTILE_SECRET_KEY!,
+        response: turnstileToken,
+      }),
+    });
+    const verify = await verifyRes.json();
+    if (!verify.success) return new Response(JSON.stringify({ error: "Verification failed" }), { status: 403 });
   }
-  const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      secret: process.env.TURNSTILE_SECRET_KEY!,
-      response: turnstileToken,
-    }),
-  });
-  const verify = await verifyRes.json();
-  if (!verify.success) return new Response(JSON.stringify({ error: "Verification failed" }), { status: 403 });
 
   // Rate limits
   const burst = await demoBurst.limit(ip);
