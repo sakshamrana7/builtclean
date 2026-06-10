@@ -44,6 +44,7 @@ function useWordPacedDisplay(targetText: string, isActive: boolean): string {
 
   useEffect(() => {
     if (!isActive) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setDisplayed(targetText);
       return;
     }
@@ -61,6 +62,7 @@ function useWordPacedDisplay(targetText: string, isActive: boolean): string {
   }, [targetText, displayed, isActive]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (targetText.length < displayed.length) setDisplayed("");
   }, [targetText, displayed.length]);
 
