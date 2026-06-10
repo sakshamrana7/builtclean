@@ -15,7 +15,8 @@ const redis = configured
 const PASS = { success: true, remaining: 99, limit: 99, reset: 0, pending: Promise.resolve() };
 
 function makeLimiter(limiter: ConstructorParameters<typeof Ratelimit>[0]["limiter"], prefix: string) {
-  if (!redis) return { limit: async (_: string) => PASS };
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  if (!redis) return { limit: async (_id: string) => PASS };
   return new Ratelimit({ redis, limiter, prefix });
 }
 
